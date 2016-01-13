@@ -24,4 +24,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'org.seniorzhai.scoreboard:scoreboard:1.0.1'
+    compile 'tyrantgit:explosionfield:1.0.1'
+    compile 'me.itangqi.waveloadingview:library:0.1.4'
 }
