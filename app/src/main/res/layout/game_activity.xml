@@ -14,16 +14,16 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="0.5">
 
             <me.itangqi.waveloadingview.WaveLoadingView
-                android:id="@+id/waveLoadingView"
+                android:id="@+id/wave_left"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:mlv_borderColor="@color/colorAccent"
                 app:mlv_borderWidth="3dp"
-                app:mlv_progressValue="100"
+                app:mlv_progressValue="0"
                 app:mlv_shapeType="square"
                 app:mlv_waveAmplitude="30"
                 app:mlv_waveColor="@color/colorAccent"/>
@@ -33,20 +33,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:text="15"
                 android:textSize="35sp"
-                android:textStyle="bold"
-                android:text="15"/>
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_left_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:text="24 / 6 = ?"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:weightSum="1">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="@color/colorPrimary"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/correct"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="@color/colorPrimary"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/incorrect"/>
+
+            </LinearLayout>
 
         </FrameLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="0.5">
 
             <me.itangqi.waveloadingview.WaveLoadingView
-                android:id="@+id/waveLoadingView2"
+                android:id="@+id/wave_right"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:mlv_borderColor="@color/colorAccent"
@@ -61,14 +95,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:text="27"
                 android:textSize="35sp"
-                android:textStyle="bold"
-                android:text="27"/>
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_right_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:text="25 + 13 = ?"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:weightSum="1">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="@color/colorPrimary"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/correct"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="@color/colorPrimary"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/incorrect"/>
+
+            </LinearLayout>
 
         </FrameLayout>
 
-
     </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@color/colorPrimary"
+        app:civ_border_width="0dp"/>
 
     <org.seniorzhai.scoreboard.ScoreBoard
         android:id="@+id/score_view"
@@ -79,12 +155,5 @@
         app:contentText="score"
         app:forecolor="#FFFFFF"
         app:lineWidth="3dp"/>
-
-    <Button
-        android:id="@+id/btn_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:text="new score"/>
 
 </FrameLayout>
