@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.braincollaboration.mathboom.ClickListenerWrapper;
 import com.braincollaboration.mathboom.R;
 import com.braincollaboration.mathboom.RandomMathQuestionGenerator;
+import com.braincollaboration.mathboom.functiongenerator.MathExpressionGenerator;
 
 import org.seniorzhai.scoreboard.ScoreBoard;
 
@@ -59,8 +60,8 @@ public class gameActivity extends Activity {
             @Override
             public void onClickWrapped(View v) {
                 explosionField.explode(v);
-                leftAnswerText.setText("" + rand.nextInt(100));
-                leftQuestiontext.setText("" + expressionGenerator.getGeneratedRandomQuestions().get(0));
+                leftAnswerText.setText(MathExpressionGenerator.getInstance().getRandomExpression().getResult());
+                leftQuestiontext.setText(MathExpressionGenerator.getInstance().getRandomExpression().getFunction());
                 startSideTimer(LEFT_SIDE_ID, MAX_LEVEL_TIME);
                 scoreView.change(score++);
             }
@@ -71,8 +72,8 @@ public class gameActivity extends Activity {
             @Override
             public void onClickWrapped(View v) {
                 explosionField.explode(v);
-                rightAnswerText.setText("" + rand.nextInt(100));
-                rightQuestionText.setText("" + expressionGenerator.getGeneratedRandomQuestions().get(0));
+                rightAnswerText.setText(MathExpressionGenerator.getInstance().getRandomExpression().getResult());
+                rightQuestionText.setText(MathExpressionGenerator.getInstance().getRandomExpression().getFunction());
                 startSideTimer(RIGHT_SIDE_ID, MAX_LEVEL_TIME);
                 scoreView.change(score++);
             }
