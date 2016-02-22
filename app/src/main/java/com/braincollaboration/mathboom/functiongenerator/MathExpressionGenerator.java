@@ -4,6 +4,17 @@ import java.util.Random;
 
 public class MathExpressionGenerator {
 
+    private final static int DIV_FIRST_ARG_MAX_RANGE = 147;
+    private final static int DIV_SECOND_ARG_MAX_RANGE = 18;
+
+    private final static int SUB_ARG_MAX_RANGE = 143;
+
+    private final static int SUMM_FIRST_ARG_MAX_RANGE = 65;
+    private final static int SUMM_SECOND_ARG_MAX_RANGE = 46;
+
+    private final static int MULT_FIRST_ARG_MAX_RANGE = 22;
+    private final static int MULT_SECOND_ARG_MAX_RANGE = 18;
+
     private final static String PLUS_STRING = " + ";
     private final static String SUBSTRACT_STRING = " - ";
     private final static String DIVIDE_STRING = " / ";
@@ -30,26 +41,28 @@ public class MathExpressionGenerator {
 
     public Function getRandomExpression() {
         Function randFunction = new Function();
-        randFunction = generateSummingFunc(randFunction);
-//        int functionID = mRandom.nextInt(4);
-//        switch (functionID){
-//            case ID_PLUS:
-//                randFunction = generateSummingFunc(randFunction);
-//                break;
-//            case ID_SUBSTRACT:
-//                break;
-//            case ID_DIVIDE:
-//                break;
-//            case ID_MULTIPLY:
-//                break;
-//        }
+        int functionID = mRandom.nextInt(4);
+        switch (functionID){
+            case ID_PLUS:
+                randFunction = generateSummingFunc(randFunction);
+                break;
+            case ID_SUBSTRACT:
+                randFunction = generateSubstractionFunc(randFunction);
+                break;
+            case ID_DIVIDE:
+                randFunction = generateDividerFunc(randFunction);
+                break;
+            case ID_MULTIPLY:
+                randFunction = generateMultiplyFunc(randFunction);
+                break;
+        }
         return randFunction;
     }
 
     private Function generateSummingFunc(Function function) {
         boolean isResultCorrect = mRandom.nextBoolean();
-        int firstArg = getRandomIntInRange(1, 25);
-        int secondArg = getRandomIntInRange(1, 25);
+        int firstArg = getRandomIntInRange(1, SUMM_FIRST_ARG_MAX_RANGE);
+        int secondArg = getRandomIntInRange(1, SUMM_SECOND_ARG_MAX_RANGE);
         int answer = firstArg + secondArg;
         String strFunction = String.valueOf(firstArg) + PLUS_STRING + String.valueOf(secondArg);
         if (!isResultCorrect) {
@@ -63,27 +76,72 @@ public class MathExpressionGenerator {
         return function;
     }
 
-    private int generateSubstractionFunc() {
-        return 0;
+    private Function generateSubstractionFunc(Function function) {
+        boolean isResultCorrect = mRandom.nextBoolean();
+        int firstArg = getRandomIntInRange(5, SUB_ARG_MAX_RANGE);
+        int secondArg = getRandomIntInRange(1, SUB_ARG_MAX_RANGE);
+        while ((firstArg - secondArg) <= 3) {
+            secondArg = getRandomIntInRange(1, SUB_ARG_MAX_RANGE);
+        }
+        int answer = firstArg - secondArg;
+        String strFunction = String.valueOf(firstArg) + SUBSTRACT_STRING + String.valueOf(secondArg);
+        if (!isResultCorrect) {
+            answer = generateRandIncorrectResult(answer);
+            function.setResult(String.valueOf(answer));
+            function.setResultCorrect(false);
+        }
+        function.setResult(String.valueOf(answer));
+        function.setResultCorrect(true);
+        function.setFunction(strFunction);
+        return function;
     }
 
-    private int generateMultiplyFunc() {
-        return 0;
+    private Function generateMultiplyFunc(Function function) {
+        boolean isResultCorrect = mRandom.nextBoolean();
+        int firstArg = getRandomIntInRange(2, MULT_FIRST_ARG_MAX_RANGE);
+        int secondArg = getRandomIntInRange(2, MULT_SECOND_ARG_MAX_RANGE);
+        int answer = firstArg * secondArg;
+        String strFunction = String.valueOf(firstArg) + MULTIPLY_STRING + String.valueOf(secondArg);
+        if (!isResultCorrect) {
+            answer = generateRandIncorrectResult(answer);
+            function.setResult(String.valueOf(answer));
+            function.setResultCorrect(false);
+        }
+        function.setResult(String.valueOf(answer));
+        function.setResultCorrect(true);
+        function.setFunction(strFunction);
+        return function;
     }
 
-    private int generateDividerFunc() {
-        return 0;
+    private Function generateDividerFunc(Function function) {
+        boolean isResultCorrect = mRandom.nextBoolean();
+        int secondArg = getRandomIntInRange(2, DIV_SECOND_ARG_MAX_RANGE);
+        int firstArg = getRandomIntInRange(1, DIV_FIRST_ARG_MAX_RANGE);
+        while ((firstArg % secondArg) != 0) {
+            firstArg = getRandomIntInRange(1, DIV_FIRST_ARG_MAX_RANGE);
+        }
+        String strFunction = String.valueOf(firstArg) + DIVIDE_STRING + String.valueOf(secondArg);
+        int answer = firstArg / secondArg;
+        if (!isResultCorrect) {
+            answer = generateRandIncorrectResult(answer);
+            function.setResult(String.valueOf(answer));
+            function.setResultCorrect(false);
+        }
+        function.setResult(String.valueOf(answer));
+        function.setResultCorrect(true);
+        function.setFunction(strFunction);
+        return function;
     }
 
     private int generateRandIncorrectResult(int correctResult) {
         boolean isPlusSide = mRandom.nextBoolean();
-        int randValue = getRandomIntInRange(2, 9);
+        int randValue = getRandomIntInRange(2, 6);
         if (isPlusSide) {
             correctResult += randValue;
         } else {
             correctResult -= randValue;
         }
-        return correctResult;
+        return Math.abs(correctResult);
     }
 
     private int getRandomIntInRange(int min, int max) {

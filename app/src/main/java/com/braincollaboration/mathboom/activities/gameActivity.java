@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.braincollaboration.mathboom.ClickListenerWrapper;
 import com.braincollaboration.mathboom.R;
 import com.braincollaboration.mathboom.RandomMathQuestionGenerator;
+import com.braincollaboration.mathboom.functiongenerator.Function;
 import com.braincollaboration.mathboom.functiongenerator.MathExpressionGenerator;
 
 import org.seniorzhai.scoreboard.ScoreBoard;
@@ -35,7 +36,6 @@ public class gameActivity extends Activity {
     private TextView leftAnswerText, rightAnswerText;
     private TextView leftQuestiontext, rightQuestionText;
     private CountDownTimer countDownTimerLeft, countDownTimerRight;
-    private RandomMathQuestionGenerator expressionGenerator = new RandomMathQuestionGenerator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,6 @@ public class gameActivity extends Activity {
     }
 
     private void initViews() {
-        final Random rand = new Random();
         scoreView = (ScoreBoard) findViewById(R.id.score_view);
         leftWave = (WaveLoadingView) findViewById(R.id.wave_left);
         rightWave = (WaveLoadingView) findViewById(R.id.wave_right);
@@ -60,8 +59,9 @@ public class gameActivity extends Activity {
             @Override
             public void onClickWrapped(View v) {
                 explosionField.explode(v);
-                leftAnswerText.setText(MathExpressionGenerator.getInstance().getRandomExpression().getResult());
-                leftQuestiontext.setText(MathExpressionGenerator.getInstance().getRandomExpression().getFunction());
+                Function randFunction = MathExpressionGenerator.getInstance().getRandomExpression();
+                leftAnswerText.setText(randFunction.getResult());
+                leftQuestiontext.setText(randFunction.getFunction());
                 startSideTimer(LEFT_SIDE_ID, MAX_LEVEL_TIME);
                 scoreView.change(score++);
             }
@@ -72,8 +72,9 @@ public class gameActivity extends Activity {
             @Override
             public void onClickWrapped(View v) {
                 explosionField.explode(v);
-                rightAnswerText.setText(MathExpressionGenerator.getInstance().getRandomExpression().getResult());
-                rightQuestionText.setText(MathExpressionGenerator.getInstance().getRandomExpression().getFunction());
+                Function randFunction = MathExpressionGenerator.getInstance().getRandomExpression();
+                rightAnswerText.setText(randFunction.getResult());
+                rightQuestionText.setText(randFunction.getFunction());
                 startSideTimer(RIGHT_SIDE_ID, MAX_LEVEL_TIME);
                 scoreView.change(score++);
             }
