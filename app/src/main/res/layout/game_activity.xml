@@ -11,16 +11,28 @@
         android:orientation="horizontal"
         android:weightSum="1">
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="0.5">
 
+            <TextView
+                android:id="@+id/tv_left_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="24 / 6 = ?"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
             <me.itangqi.waveloadingview.WaveLoadingView
                 android:id="@+id/wave_left"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@+id/tv_left_question"
                 app:mlv_borderColor="@color/colorAccent"
                 app:mlv_borderWidth="3dp"
                 app:mlv_progressValue="0"
@@ -37,20 +49,10 @@
                 android:textSize="35sp"
                 android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/tv_left_question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:gravity="center"
-                android:text="24 / 6 = ?"
-                android:textSize="30sp"
-                android:textStyle="bold"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="bottom"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
                 android:weightSum="1">
 
                 <ImageButton
@@ -71,18 +73,30 @@
 
             </LinearLayout>
 
-        </FrameLayout>
+        </RelativeLayout>
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="0.5">
 
+            <TextView
+                android:id="@+id/tv_right_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="25 + 13 = ?"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
             <me.itangqi.waveloadingview.WaveLoadingView
                 android:id="@+id/wave_right"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@+id/tv_right_question"
                 app:mlv_borderColor="@color/colorAccent"
                 app:mlv_borderWidth="3dp"
                 app:mlv_progressValue="0"
@@ -99,20 +113,11 @@
                 android:textSize="35sp"
                 android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/tv_right_question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:gravity="center"
-                android:text="25 + 13 = ?"
-                android:textSize="30sp"
-                android:textStyle="bold"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_gravity="bottom"
+                android:layout_alignParentBottom="true"
                 android:weightSum="1">
 
                 <ImageButton
@@ -133,7 +138,7 @@
 
             </LinearLayout>
 
-        </FrameLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 
