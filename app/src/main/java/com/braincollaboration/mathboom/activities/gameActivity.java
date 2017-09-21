@@ -10,13 +10,10 @@ import android.widget.TextView;
 
 import com.braincollaboration.mathboom.ClickListenerWrapper;
 import com.braincollaboration.mathboom.R;
-import com.braincollaboration.mathboom.RandomMathQuestionGenerator;
 import com.braincollaboration.mathboom.functiongenerator.Function;
 import com.braincollaboration.mathboom.functiongenerator.MathExpressionGenerator;
 
 import org.seniorzhai.scoreboard.ScoreBoard;
-
-import java.util.Random;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
 import tyrantgit.explosionfield.ExplosionField;

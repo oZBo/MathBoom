@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,12 +21,12 @@
                 android:id="@+id/tv_left_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top"
                 android:layout_alignParentTop="true"
+                android:layout_gravity="top"
                 android:gravity="center"
                 android:text="24 / 6 = ?"
                 android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <me.itangqi.waveloadingview.WaveLoadingView
                 android:id="@+id/wave_left"
@@ -38,7 +38,7 @@
                 app:mlv_progressValue="0"
                 app:mlv_shapeType="square"
                 app:mlv_waveAmplitude="30"
-                app:mlv_waveColor="@color/colorAccent"/>
+                app:mlv_waveColor="@color/colorAccent" />
 
             <TextView
                 android:id="@+id/tv_left_answer"
@@ -47,7 +47,7 @@
                 android:gravity="center"
                 android:text="15"
                 android:textSize="35sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,16 +60,18 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:background="@color/colorPrimary"
+                    android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/correct"/>
+                    android:src="@drawable/correct" />
 
                 <ImageButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:background="@color/colorPrimary"
+                    android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/incorrect"/>
+                    android:src="@drawable/incorrect" />
 
             </LinearLayout>
 
@@ -85,12 +87,12 @@
                 android:id="@+id/tv_right_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top"
                 android:layout_alignParentTop="true"
+                android:layout_gravity="top"
                 android:gravity="center"
                 android:text="25 + 13 = ?"
                 android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <me.itangqi.waveloadingview.WaveLoadingView
                 android:id="@+id/wave_right"
@@ -102,7 +104,7 @@
                 app:mlv_progressValue="0"
                 app:mlv_shapeType="square"
                 app:mlv_waveAmplitude="20"
-                app:mlv_waveColor="@color/colorAccent"/>
+                app:mlv_waveColor="@color/colorAccent" />
 
             <TextView
                 android:id="@+id/tv_right_answer"
@@ -111,13 +113,13 @@
                 android:gravity="center"
                 android:text="27"
                 android:textSize="35sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_gravity="bottom"
                 android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
                 android:weightSum="1">
 
                 <ImageButton
@@ -125,16 +127,18 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:background="@color/colorPrimary"
+                    android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/correct"/>
+                    android:src="@drawable/correct" />
 
                 <ImageButton
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:background="@color/colorPrimary"
+                    android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/incorrect"/>
+                    android:src="@drawable/incorrect" />
 
             </LinearLayout>
 
@@ -142,14 +146,13 @@
 
     </LinearLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:src="@color/colorPrimary"
-        app:civ_border_width="0dp"/>
+        app:civ_border_width="0dp" />
 
     <org.seniorzhai.scoreboard.ScoreBoard
         android:id="@+id/score_view"
@@ -159,6 +162,6 @@
         app:backcolor="#33000000"
         app:contentText="score"
         app:forecolor="#FFFFFF"
-        app:lineWidth="3dp"/>
+        app:lineWidth="3dp" />
 
 </FrameLayout>
