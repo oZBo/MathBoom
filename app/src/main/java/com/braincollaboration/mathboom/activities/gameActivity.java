@@ -3,10 +3,10 @@ package com.braincollaboration.mathboom.activities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.braincollaboration.mathboom.ClickListenerWrapper;
@@ -32,8 +32,9 @@ public class gameActivity extends Activity {
     private ExplosionField explosionField;
     private WaveLoadingView leftWave, rightWave;
     private TextView leftAnswerText, rightAnswerText;
-    private TextView leftQuestiontext, rightQuestionText;
+    private TextView leftQuestionText, rightQuestionText;
     private CountDownTimer countDownTimerLeft, countDownTimerRight;
+    private ImageView leftExplosionField, rightExplosionField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,34 +48,29 @@ public class gameActivity extends Activity {
     }
 
     private void initViews() {
+        leftExplosionField = (ImageView) findViewById(R.id.left_explosion_field);
+        rightExplosionField = (ImageView) findViewById(R.id.right_explosion_field);
         scoreView = (ScoreBoard) findViewById(R.id.score_view);
         leftWave = (WaveLoadingView) findViewById(R.id.wave_left);
         rightWave = (WaveLoadingView) findViewById(R.id.wave_right);
-        leftQuestiontext = (TextView) findViewById(R.id.tv_left_question);
+        leftQuestionText = (TextView) findViewById(R.id.tv_left_question);
         rightQuestionText = (TextView) findViewById(R.id.tv_right_question);
+
         leftAnswerText = (TextView) findViewById(R.id.tv_left_answer);
-        leftAnswerText.setOnClickListener(new ClickListenerWrapper() {
+        leftAnswerText.setOnClickListener(new ClickListenerWrapper(leftExplosionField) {
             @Override
             public void onClickWrapped(View v) {
                 Function randFunction = MathExpressionGenerator.getInstance().getRandomExpression();
                 leftAnswerText.setText(randFunction.getResult());
-                leftQuestiontext.setText(randFunction.getFunction());
+                leftQuestionText.setText(randFunction.getFunction());
                 startSideTimer(LEFT_SIDE_ID, MAX_LEVEL_TIME);
                 scoreView.change(score++);
-                explosionField.explode(findViewById(R.id.left_img));
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        findViewById(R.id.left_img).setScaleX(1);
-                        findViewById(R.id.left_img).setScaleY(1);
-                    }
-                }, 500);
+                explosionField.explode(findViewById(R.id.left_explosion_field));
             }
         });
 
         rightAnswerText = (TextView) findViewById(R.id.tv_right_answer);
-        rightAnswerText.setOnClickListener(new ClickListenerWrapper() {
+        rightAnswerText.setOnClickListener(new ClickListenerWrapper(rightExplosionField) {
             @Override
             public void onClickWrapped(View v) {
                 Function randFunction = MathExpressionGenerator.getInstance().getRandomExpression();
@@ -82,19 +78,10 @@ public class gameActivity extends Activity {
                 rightQuestionText.setText(randFunction.getFunction());
                 startSideTimer(RIGHT_SIDE_ID, MAX_LEVEL_TIME);
                 scoreView.change(score++);
-                explosionField.explode(findViewById(R.id.right_img));
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        findViewById(R.id.right_img).setScaleX(1);
-                        findViewById(R.id.right_img).setScaleY(1);
-                    }
-                }, 500);
+                explosionField.explode(findViewById(R.id.right_explosion_field));
             }
         });
     }
-
 
     private void startSideTimer(int sideID, final long levelTime) {
         switch (sideID) {
