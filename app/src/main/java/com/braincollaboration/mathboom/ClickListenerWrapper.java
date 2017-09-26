@@ -23,9 +23,6 @@ public abstract class ClickListenerWrapper implements OnClickListener {
             @Override
             public void run() {
                 actionPerforming = false;
-                v.setScaleY(1);
-                v.setScaleX(1);
-                v.setAlpha(1);
             }
         }, CLICK_DELAY);
     }

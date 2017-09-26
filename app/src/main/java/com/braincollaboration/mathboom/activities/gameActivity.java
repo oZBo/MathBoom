@@ -3,6 +3,7 @@ package com.braincollaboration.mathboom.activities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -55,13 +56,20 @@ public class gameActivity extends Activity {
         leftAnswerText.setOnClickListener(new ClickListenerWrapper() {
             @Override
             public void onClickWrapped(View v) {
-                explosionField.explode(v);
                 Function randFunction = MathExpressionGenerator.getInstance().getRandomExpression();
                 leftAnswerText.setText(randFunction.getResult());
                 leftQuestiontext.setText(randFunction.getFunction());
                 startSideTimer(LEFT_SIDE_ID, MAX_LEVEL_TIME);
                 scoreView.change(score++);
                 explosionField.explode(findViewById(R.id.left_img));
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        findViewById(R.id.left_img).setScaleX(1);
+                        findViewById(R.id.left_img).setScaleY(1);
+                    }
+                }, 500);
             }
         });
 
@@ -69,13 +77,20 @@ public class gameActivity extends Activity {
         rightAnswerText.setOnClickListener(new ClickListenerWrapper() {
             @Override
             public void onClickWrapped(View v) {
-                explosionField.explode(v);
                 Function randFunction = MathExpressionGenerator.getInstance().getRandomExpression();
                 rightAnswerText.setText(randFunction.getResult());
                 rightQuestionText.setText(randFunction.getFunction());
                 startSideTimer(RIGHT_SIDE_ID, MAX_LEVEL_TIME);
                 scoreView.change(score++);
                 explosionField.explode(findViewById(R.id.right_img));
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        findViewById(R.id.right_img).setScaleX(1);
+                        findViewById(R.id.right_img).setScaleY(1);
+                    }
+                }, 500);
             }
         });
     }
