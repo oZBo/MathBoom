@@ -61,6 +61,7 @@ public class gameActivity extends Activity {
                 leftQuestiontext.setText(randFunction.getFunction());
                 startSideTimer(LEFT_SIDE_ID, MAX_LEVEL_TIME);
                 scoreView.change(score++);
+                explosionField.explode(findViewById(R.id.left_img));
             }
         });
 
@@ -74,6 +75,7 @@ public class gameActivity extends Activity {
                 rightQuestionText.setText(randFunction.getFunction());
                 startSideTimer(RIGHT_SIDE_ID, MAX_LEVEL_TIME);
                 scoreView.change(score++);
+                explosionField.explode(findViewById(R.id.right_img));
             }
         });
     }
